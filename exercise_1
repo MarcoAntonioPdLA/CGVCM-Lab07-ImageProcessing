@@ -30,3 +30,8 @@ cv2.imshow("Dog redimensionado", image_2_resized)
 cv2.imshow("Kid redimensionado", image_3_resized)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# Guardando imágenes para el siguiente ejercicio
+cv2.imwrite("images/cat_resized.jpg", image_1_resized)
+cv2.imwrite("images/dog_resized.jpg", image_2_resized)
+cv2.imwrite("images/kid_resized.jpg", image_3_resized)
