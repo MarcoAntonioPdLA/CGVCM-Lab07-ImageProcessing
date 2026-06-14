@@ -1,0 +1,32 @@
+import cv2
+
+# Cargando imágenes
+image_1 = cv2.imread("images/cat.jpg")
+image_2 = cv2.imread("images/dog.jpg")
+image_3 = cv2.imread("images/kid.jpg")
+for nombre, image in zip(["cat.jpg", "dog.jpg", "kid.jpg"], [image_1, image_2, image_3]):
+    if image is None:
+        print(f"Error: no se pudo cargar {nombre}")
+        exit()
+
+# Obteniendo dimensiones
+dimensions = [image_1.shape[:2], image_2.shape[:2], image_3.shape[:2]]
+print(f"Dimensiones originales: {dimensions}")
+
+heights = [d[0] for d in dimensions]
+widths = [d[1] for d in dimensions]
+max_height = max(heights)
+max_width = max(widths)
+print(f"Dimensión objetivo: {max_width}x{max_height}")
+
+# Redimensionando
+image_1_resized = cv2.resize(image_1, (max_width, max_height))
+image_2_resized = cv2.resize(image_2, (max_width, max_height))
+image_3_resized = cv2.resize(image_3, (max_width, max_height))
+
+# Mostrando imágenes
+cv2.imshow("Cat redimensionado", image_1_resized)
+cv2.imshow("Dog redimensionado", image_2_resized)
+cv2.imshow("Kid redimensionado", image_3_resized)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
